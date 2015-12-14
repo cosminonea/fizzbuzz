@@ -1,11 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace FizzBuzz
 {
     public class FizzBuzzPrinter
     {
         public string Print(IEnumerable<int> range)
+        {
+            return GetOutputAndStats(range).Output.TrimStart();
+        }
+
+        public string PrintOutputAndStats(IEnumerable<int> range)
+        {
+            var result = GetOutputAndStats(range);
+            return string.Format("{1}{0}fizz: {2}{0}buzz: {3}{0}fizzbuzz: {4}{0}lucky: {5}{0}integer: {6}",
+                Environment.NewLine,
+                result.Output.TrimStart(),
+                result.FizzCount,
+                result.BuzzCount,
+                result.FizzBuzzCount,
+                result.LuckyCount,
+                result.IntegerCount
+                );
+        }
+
+        public PrintResult GetOutputAndStats(IEnumerable<int> range)
         {
             return range.Select(x =>
                         {
@@ -31,7 +52,30 @@ namespace FizzBuzz
 
                             return x.ToString();
                         })
-                        .Aggregate((current, next) => current + " " + next);
+                        .Aggregate<string, PrintResult>(new PrintResult(),
+                            (current, next) =>
+                            {
+                                switch (next)
+                                {
+                                    case "fizz":
+                                        current.FizzCount++;
+                                        break;
+                                    case "buzz":
+                                        current.BuzzCount++;
+                                        break;
+                                    case "fizzbuzz":
+                                        current.FizzBuzzCount++;
+                                        break;
+                                    case "lucky":
+                                        current.LuckyCount++;
+                                        break;
+                                    default:
+                                        current.IntegerCount++;
+                                        break;
+                                }
+                                current.Output += " " + next;
+                                return current;
+                            });
         }
 
         private bool IsLucky(int x)
@@ -43,5 +87,16 @@ namespace FizzBuzz
         {
             return x % y == 0;
         }
+    }
+
+    public class PrintResult
+    {
+        public string Output { get; set; }
+
+        public int FizzCount { get; set; }
+        public int BuzzCount { get; set; }
+        public int FizzBuzzCount { get; set; }
+        public int LuckyCount { get; set; }
+        public int IntegerCount { get; set; }
     }
 }
