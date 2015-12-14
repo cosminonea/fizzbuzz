@@ -14,6 +14,11 @@ namespace FizzBuzz
                                 return "fizz";
                             }
 
+                            if (x % 5 == 0)
+                            {
+                                return "buzz";
+                            }
+
                             return x.ToString();
                         })
                         .Aggregate((current, next) => current + " " + next);

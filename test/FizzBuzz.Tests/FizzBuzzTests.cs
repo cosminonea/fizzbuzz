@@ -29,7 +29,7 @@ namespace FizzBuzz.Tests
             var sut = new FizzBuzzPrinter();
             var result = sut.Print(new[] { 5, 10 });
 
-            Assert.AreEqual("buzz buzz buzz", result);
+            Assert.AreEqual("buzz buzz", result);
         }
 
         [Test]
