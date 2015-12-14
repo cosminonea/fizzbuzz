@@ -9,6 +9,11 @@ namespace FizzBuzz
         {
             return range.Select(x =>
                         {
+                            if (IsLucky(x))
+                            {
+                                return "lucky";
+                            }
+
                             if (IsMultiple(x, 15))
                             {
                                 return "fizzbuzz";
@@ -27,6 +32,11 @@ namespace FizzBuzz
                             return x.ToString();
                         })
                         .Aggregate((current, next) => current + " " + next);
+        }
+
+        private bool IsLucky(int x)
+        {
+            return x.ToString().Contains("3");
         }
 
         private bool IsMultiple(int x, int y)
