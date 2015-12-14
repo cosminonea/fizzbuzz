@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace FizzBuzz
 {
@@ -6,7 +7,8 @@ namespace FizzBuzz
     {
         public string Print(IEnumerable<int> range)
         {
-            return string.Empty;
+            return range.Select(x => x.ToString())
+                        .Aggregate((current, next) => current + " " + next);
         }
     }
 }
