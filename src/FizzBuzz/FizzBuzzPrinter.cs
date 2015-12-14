@@ -9,6 +9,11 @@ namespace FizzBuzz
         {
             return range.Select(x =>
                         {
+                            if (IsMultiple(x, 15))
+                            {
+                                return "fizzbuzz";
+                            }
+
                             if (IsMultiple(x, 3))
                             {
                                 return "fizz";

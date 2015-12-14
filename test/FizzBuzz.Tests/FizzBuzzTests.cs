@@ -33,12 +33,12 @@ namespace FizzBuzz.Tests
         }
 
         [Test]
-        public void ShouldOutputFizzBuzzForMultiplesOfFiveAndThree()
+        public void ShouldOutputFizzBuzzForMultiplesOfFithteen()
         {
             var sut = new FizzBuzzPrinter();
             var result = sut.Print(new[] { 15, 30 });
 
-            Assert.AreEqual("fizzbuzz fizzbuzz fizzbuzz", result);
+            Assert.AreEqual("fizzbuzz fizzbuzz", result);
         }
 
         [Test]
