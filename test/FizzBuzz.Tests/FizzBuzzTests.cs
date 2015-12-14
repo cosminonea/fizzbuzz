@@ -74,5 +74,14 @@ integer: 10";
 
             Assert.AreEqual(expectedResult, result);
         }
+
+        [Test]
+        public void ShouldPrintNothingWhenNullInput()
+        {
+            var sut = new FizzBuzzPrinter();
+            var result = sut.Print(null);
+
+            Assert.AreEqual(string.Empty, result);
+        }
     }
 }

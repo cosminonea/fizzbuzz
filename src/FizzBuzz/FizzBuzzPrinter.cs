@@ -9,11 +9,21 @@ namespace FizzBuzz
     {
         public string Print(IEnumerable<int> range)
         {
+            if (range == null)
+            {
+                return string.Empty;
+            }
+
             return GetOutputAndStats(range).Output.TrimStart();
         }
 
         public string PrintOutputAndStats(IEnumerable<int> range)
         {
+            if (range == null)
+            {
+                return string.Empty;
+            }
+
             var result = GetOutputAndStats(range);
             return string.Format("{1}{0}fizz: {2}{0}buzz: {3}{0}fizzbuzz: {4}{0}lucky: {5}{0}integer: {6}",
                 Environment.NewLine,
