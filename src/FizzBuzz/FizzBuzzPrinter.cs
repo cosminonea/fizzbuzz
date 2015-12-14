@@ -36,7 +36,7 @@ namespace FizzBuzz
                 );
         }
 
-        public PrintResult GetOutputAndStats(IEnumerable<int> range)
+        private PrintResult GetOutputAndStats(IEnumerable<int> range)
         {
             return range.Select(x =>
                         {
