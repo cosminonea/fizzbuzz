@@ -9,12 +9,12 @@ namespace FizzBuzz
         {
             return range.Select(x =>
                         {
-                            if (x % 3 == 0)
+                            if (IsMultiple(x, 3))
                             {
                                 return "fizz";
                             }
 
-                            if (x % 5 == 0)
+                            if (IsMultiple(x, 5))
                             {
                                 return "buzz";
                             }
@@ -22,6 +22,11 @@ namespace FizzBuzz
                             return x.ToString();
                         })
                         .Aggregate((current, next) => current + " " + next);
+        }
+
+        private bool IsMultiple(int x, int y)
+        {
+            return x % y == 0;
         }
     }
 }
