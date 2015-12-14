@@ -7,7 +7,15 @@ namespace FizzBuzz
     {
         public string Print(IEnumerable<int> range)
         {
-            return range.Select(x => x.ToString())
+            return range.Select(x =>
+                        {
+                            if (x % 3 == 0)
+                            {
+                                return "fizz";
+                            }
+
+                            return x.ToString();
+                        })
                         .Aggregate((current, next) => current + " " + next);
         }
     }
