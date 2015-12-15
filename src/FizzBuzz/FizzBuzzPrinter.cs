@@ -90,12 +90,28 @@ namespace FizzBuzz
 
         private bool IsLucky(int x)
         {
-            return x.ToString().Contains("3");
+            return NumberContainsDigit(x, 3);
         }
 
         private bool IsMultiple(int x, int y)
         {
             return x % y == 0;
+        }
+
+        private bool NumberContainsDigit(int number, int digit)
+        {
+            number = Math.Abs(number);
+            while (number != 0)
+            {
+                var lastDigit = number % 10;
+                if (lastDigit == digit)
+                {
+                    return true;
+                }
+                number = number / 10;
+            }
+
+            return false;
         }
     }
 

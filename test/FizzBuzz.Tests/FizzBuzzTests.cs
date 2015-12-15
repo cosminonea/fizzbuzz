@@ -83,5 +83,14 @@ integer: 10";
 
             Assert.AreEqual(string.Empty, result);
         }
+
+        [Test]
+        public void ShouldWorkForNegativeNumbers()
+        {
+            var sut = new FizzBuzzPrinter();
+            var result = sut.Print(new [] { -13 });
+
+            Assert.AreEqual("lucky", result);
+        }
     }
 }
